@@ -321,6 +321,33 @@ window.addEventListener('load', () => {
             }
         });
     }
+    
+    // Handle mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    
+    if (mobileMenuBtn && sidebar && sidebarOverlay) {
+        mobileMenuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            sidebarOverlay.classList.toggle('active');
+        });
+        
+        sidebarOverlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+        });
+        
+        // Close sidebar when clicking a chat item on mobile
+        document.querySelectorAll('.chat-item').forEach(item => {
+            item.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('active');
+                    sidebarOverlay.classList.remove('active');
+                }
+            });
+        });
+    }
 });
 
 // Disable input functionality since this is just a demo

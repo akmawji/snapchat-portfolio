@@ -347,6 +347,19 @@ body {
     gap: 12px;
 }
 
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: #000;
+}
+
+.mobile-menu-btn svg {
+    stroke: #000;
+}
+
 .back-arrow {
     font-size: 20px;
     cursor: pointer;
@@ -573,21 +586,56 @@ body {
         min-height: 100vh;
     }
     
-    /* Sidebar - Compact on mobile, show at top */
-    .sidebar {
-        width: 100%;
-        max-height: 40vh;
-        border-right: none;
-        border-bottom: 1px solid #E0E0E0;
-        flex-shrink: 0;
-        overflow-y: auto;
+    /* Mobile menu button - visible on mobile */
+    .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
-    /* Main chat - Full width on mobile, takes remaining space */
+    .back-arrow {
+        display: none;
+    }
+    
+    /* Sidebar - Hidden by default on mobile, slides in from left */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 85%;
+        max-width: 320px;
+        height: 100vh;
+        z-index: 200;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    /* Overlay when sidebar is open */
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 150;
+    }
+    
+    .sidebar-overlay.active {
+        display: block;
+    }
+    
+    /* Main chat - Full width on mobile */
     .main-chat {
         width: 100%;
         flex: 1;
-        min-height: 60vh;
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
     }
@@ -636,10 +684,10 @@ body {
         font-size: 9px;
     }
     
-    /* Chat list mobile - compact */
+    /* Chat list mobile - full height */
     .chat-list {
         padding: 2px 0;
-        max-height: calc(40vh - 140px);
+        flex: 1;
         overflow-y: auto;
     }
     

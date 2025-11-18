@@ -8,6 +8,9 @@
 </head>
 <body>
     <div class="app-container">
+        <!-- Sidebar Overlay (mobile only) -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+        
         <!-- Left Sidebar -->
         <div class="sidebar">
             <div class="search-container">
@@ -137,6 +140,13 @@
         <!-- Main Chat View -->
         <div class="main-chat">
             <div class="chat-header">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
                 <div class="back-arrow">←</div>
                 <div class="header-contact">
                     <div class="header-avatar">👔</div>
