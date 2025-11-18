@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snapchat Clone - Chat</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <div class="search-container">
+                <div class="search-box">
+                    <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <span class="search-text">Search</span>
+                </div>
+                <div class="my-ai-btn">
+                    <div class="my-ai-avatar">🤖</div>
+                    <span class="my-ai-text">My AI</span>
+                    <span class="my-ai-arrow">→</span>
+                </div>
+            </div>
+            
+            <div class="stories-row">
+                <div class="story-item" data-story="recruiter">
+                    <div class="story-circle recruiter-story">👔</div>
+                    <div class="story-label">Recruiter</div>
+                </div>
+                <div class="story-item">
+                    <div class="story-circle empty"></div>
+                </div>
+                <div class="story-item">
+                    <div class="story-circle empty"></div>
+                </div>
+                <div class="story-item">
+                    <div class="story-circle empty"></div>
+                </div>
+                <div class="story-item">
+                    <div class="story-circle empty"></div>
+                </div>
+            </div>
+            
+            <!-- Story Viewer -->
+            <div class="story-viewer" id="storyViewer">
+                <div class="story-viewer-content">
+                    <div class="story-close" id="storyClose">×</div>
+                    <div class="story-header">
+                        <div class="story-viewer-avatar">👔</div>
+                        <div class="story-viewer-name">Recruiter</div>
+                        <div class="story-time">now</div>
+                    </div>
+                    <div class="story-text">Had a wonderful time at AfroTech</div>
+                </div>
+            </div>
+            
+            <div class="chat-list">
+                <div class="chat-item active" data-chat="recruiter">
+                    <div class="chat-avatar">👔</div>
+                    <div class="chat-info">
+                        <div class="chat-name">Recruiter</div>
+                        <div class="chat-preview">
+                            <span>Active now</span>
+                        </div>
+                    </div>
+                    <div class="chat-action">
+                        <div class="action-icon">📷</div>
+                    </div>
+                </div>
+                <div class="chat-item" data-chat="shopify">
+                    <div class="chat-avatar">🛒</div>
+                    <div class="chat-info">
+                        <div class="chat-name">Shopify</div>
+                        <div class="chat-preview">
+                            <span class="preview-icon">💬</span>
+                            <span>New Chat • 2d</span>
+                        </div>
+                    </div>
+                    <div class="chat-action">
+                        <div class="action-icon">💬</div>
+                    </div>
+                </div>
+                <div class="chat-item" data-chat="google">
+                    <div class="chat-avatar">🔍</div>
+                    <div class="chat-info">
+                        <div class="chat-name">Google</div>
+                        <div class="chat-preview">
+                            <span class="preview-icon">💬</span>
+                            <span>Received • May 15</span>
+                        </div>
+                    </div>
+                    <div class="chat-action">
+                        <div class="action-icon-wrapper">
+                            <div class="action-icon">📷</div>
+                        </div>
+                        <div class="action-label">Reply</div>
+                    </div>
+                </div>
+                <div class="chat-item" data-chat="healthcare">
+                    <div class="chat-avatar">🏥</div>
+                    <div class="chat-info">
+                        <div class="chat-name">Healthcare Systems</div>
+                        <div class="chat-preview">
+                            <span class="preview-icon">💬</span>
+                            <span>Received • Jan 10</span>
+                        </div>
+                    </div>
+                    <div class="chat-action">
+                        <div class="action-icon-wrapper">
+                            <div class="action-icon">📷</div>
+                        </div>
+                        <div class="action-label">Reply</div>
+                    </div>
+                </div>
+                <div class="chat-item" data-chat="mining">
+                    <div class="chat-avatar">⛏️</div>
+                    <div class="chat-info">
+                        <div class="chat-name">1266407 B.C. LTD</div>
+                        <div class="chat-preview">
+                            <span class="preview-icon">💬</span>
+                            <span>Received • Sep 5</span>
+                        </div>
+                    </div>
+                    <div class="chat-action">
+                        <div class="action-icon-wrapper">
+                            <div class="action-icon">📷</div>
+                        </div>
+                        <div class="action-label">Reply</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Chat View -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <div class="back-arrow">←</div>
+                <div class="header-contact">
+                    <div class="header-avatar">👔</div>
+                    <div class="header-name">Recruiter</div>
+                </div>
+                <button class="call-button">
+                    <span class="call-text">Call</span>
+                    <svg class="call-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 7l-7 5 7 5V7z"></path>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                    </svg>
+                    <div class="call-separator"></div>
+                    <svg class="call-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be added here by JavaScript -->
+            </div>
+            
+            <div class="chat-input-container">
+                <button class="camera-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                        <circle cx="12" cy="13" r="4"></circle>
+                    </svg>
+                </button>
+                <input type="text" id="messageInput" class="message-input" placeholder="Send a chat" disabled>
+                <button class="emoji-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                        <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                        <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                    </svg>
+                </button>
+                <button class="gallery-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <path d="M3 9l9 6 9-6"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+
