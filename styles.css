@@ -354,10 +354,16 @@ body {
     cursor: pointer;
     padding: 8px;
     color: #000;
+    min-width: 40px;
+    min-height: 40px;
+    align-items: center;
+    justify-content: center;
 }
 
 .mobile-menu-btn svg {
     stroke: #000;
+    width: 24px;
+    height: 24px;
 }
 
 .back-arrow {
@@ -574,6 +580,11 @@ body {
     cursor: not-allowed;
 }
 
+/* Sidebar overlay - hidden on desktop */
+.sidebar-overlay {
+    display: none;
+}
+
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
     body {
@@ -615,9 +626,9 @@ body {
         transform: translateX(0);
     }
     
-    /* Overlay when sidebar is open */
+    /* Overlay when sidebar is open - only on mobile */
     .sidebar-overlay {
-        display: none;
+        display: block;
         position: fixed;
         top: 0;
         left: 0;
@@ -625,10 +636,14 @@ body {
         height: 100%;
         background: rgba(0, 0, 0, 0.5);
         z-index: 150;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
     }
     
     .sidebar-overlay.active {
-        display: block;
+        opacity: 1;
+        visibility: visible;
     }
     
     /* Main chat - Full width on mobile */

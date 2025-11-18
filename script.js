@@ -282,6 +282,54 @@ function startConversation(chatId) {
     });
 }
 
+// Function to close mobile sidebar
+function closeMobileSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    if (sidebar) {
+        sidebar.classList.remove('active');
+    }
+    if (sidebarOverlay) {
+        sidebarOverlay.classList.remove('active');
+    }
+}
+
+// Initialize mobile menu
+function initMobileMenu() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    
+    if (!mobileMenuBtn || !sidebar || !sidebarOverlay) {
+        return;
+    }
+    
+    // Toggle sidebar on menu button click
+    mobileMenuBtn.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const isActive = sidebar.classList.contains('active');
+        if (isActive) {
+            closeMobileSidebar();
+        } else {
+            sidebar.classList.add('active');
+            sidebarOverlay.classList.add('active');
+        }
+    };
+    
+    // Close sidebar when clicking overlay
+    sidebarOverlay.onclick = function() {
+        closeMobileSidebar();
+    };
+}
+
+// Initialize mobile menu when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
+} else {
+    initMobileMenu();
+}
+
 // Handle chat item clicks
 document.querySelectorAll('.chat-item').forEach(item => {
     item.addEventListener('click', () => {
@@ -292,6 +340,11 @@ document.querySelectorAll('.chat-item').forEach(item => {
         // Start the conversation
         const chatId = item.getAttribute('data-chat');
         startConversation(chatId);
+        
+        // Close sidebar on mobile after selecting a chat
+        if (window.innerWidth <= 768) {
+            closeMobileSidebar();
+        }
     });
 });
 
@@ -322,32 +375,8 @@ window.addEventListener('load', () => {
         });
     }
     
-    // Handle mobile menu toggle
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const sidebar = document.querySelector('.sidebar');
-    const sidebarOverlay = document.getElementById('sidebarOverlay');
-    
-    if (mobileMenuBtn && sidebar && sidebarOverlay) {
-        mobileMenuBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-            sidebarOverlay.classList.toggle('active');
-        });
-        
-        sidebarOverlay.addEventListener('click', () => {
-            sidebar.classList.remove('active');
-            sidebarOverlay.classList.remove('active');
-        });
-        
-        // Close sidebar when clicking a chat item on mobile
-        document.querySelectorAll('.chat-item').forEach(item => {
-            item.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    sidebar.classList.remove('active');
-                    sidebarOverlay.classList.remove('active');
-                }
-            });
-        });
-    }
+    // Initialize mobile menu on load as well
+    initMobileMenu();
 });
 
 // Disable input functionality since this is just a demo
